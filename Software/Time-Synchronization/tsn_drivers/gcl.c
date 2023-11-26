@@ -209,20 +209,20 @@ int get_gcl(uint16_t portNumber) {
 	switch (portNumber)
 	{
 		case 1:
-			CTRL_ADDR = base_ptr_gcl + PORT_0_GCL_CTRL;
-			GCL_DATA_ADDR = port_0_gcl;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_gcl + PORT_0_GCL_CTRL);
+			GCL_DATA_ADDR = (int*)(port_0_gcl);
 			break;
 		case 2:
-			CTRL_ADDR = base_ptr_gcl + PORT_1_GCL_CTRL;
-			GCL_DATA_ADDR = port_1_gcl;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_gcl + PORT_1_GCL_CTRL);
+			GCL_DATA_ADDR = (int*)(port_1_gcl);
 			break;
 		case 3:
-			CTRL_ADDR = base_ptr_gcl + PORT_2_GCL_CTRL;
-			GCL_DATA_ADDR = port_2_gcl;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_gcl + PORT_2_GCL_CTRL);
+			GCL_DATA_ADDR = (int*)(port_2_gcl);
 			break;
 		case 4:
-			CTRL_ADDR = base_ptr_gcl + PORT_3_GCL_CTRL;
-			GCL_DATA_ADDR = port_3_gcl;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_gcl + PORT_3_GCL_CTRL);
+			GCL_DATA_ADDR = (int*)(port_3_gcl);
 			break;
 		default:
 			printf("get gcl: Invalid portNumber.\r\n");
@@ -249,20 +249,20 @@ int set_gcl(uint16_t portNumber, uint16_t gcl_id, uint16_t value) {
 	switch (portNumber)
 	{
 		case 1:
-			CTRL_ADDR = base_ptr_gcl + PORT_0_GCL_CTRL;
-			GCL_DATA_ADDR = port_0_gcl;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_gcl + PORT_0_GCL_CTRL);
+			GCL_DATA_ADDR = (int*)(port_0_gcl);
 			break;
 		case 2:
-			CTRL_ADDR = base_ptr_gcl + PORT_1_GCL_CTRL;
-			GCL_DATA_ADDR = port_1_gcl;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_gcl + PORT_1_GCL_CTRL);
+			GCL_DATA_ADDR = (int*)(port_1_gcl);
 			break;
 		case 3:
-			CTRL_ADDR = base_ptr_gcl + PORT_2_GCL_CTRL;
-			GCL_DATA_ADDR = port_2_gcl;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_gcl + PORT_2_GCL_CTRL);
+			GCL_DATA_ADDR = (int*)(port_2_gcl);
 			break;
 		case 4:
-			CTRL_ADDR = base_ptr_gcl + PORT_3_GCL_CTRL;
-			GCL_DATA_ADDR = port_3_gcl;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_gcl + PORT_3_GCL_CTRL);
+			GCL_DATA_ADDR = (int*)(port_3_gcl);
 			break;
 		default:
 			printf("set gcl: Invalid portNumber.\r\n");
@@ -288,20 +288,20 @@ int get_gcl_time_interval(uint16_t portNumber)
 	switch (portNumber)
 	{
 		case 1:
-			CTRL_ADDR = base_ptr_gcl + PORT_0_GCL_CTRL;
-			GCL_TIME_ADDR = port_0_gcl;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_gcl + PORT_0_GCL_CTRL);
+			GCL_TIME_ADDR = (int*)(port_0_gcl);
 			break;
 		case 2:
-			CTRL_ADDR = base_ptr_gcl + PORT_1_GCL_CTRL;
-			GCL_TIME_ADDR = port_1_gcl;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_gcl + PORT_1_GCL_CTRL);
+			GCL_TIME_ADDR = (int*)(port_1_gcl);
 			break;
 		case 3:
-			CTRL_ADDR = base_ptr_gcl + PORT_2_GCL_CTRL;
-			GCL_TIME_ADDR = port_2_gcl;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_gcl + PORT_2_GCL_CTRL);
+			GCL_TIME_ADDR = (int*)(port_2_gcl);
 			break;
 		case 4:
-			CTRL_ADDR = base_ptr_gcl + PORT_3_GCL_CTRL;
-			GCL_TIME_ADDR = port_3_gcl;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_gcl + PORT_3_GCL_CTRL);
+			GCL_TIME_ADDR = (int*)(port_3_gcl);
 			break;
 		default:
 			printf("get gcl: Invalid portNumber.\r\n");
@@ -330,20 +330,20 @@ int set_gcl_time_interval(uint16_t portNumber, uint16_t gcl_id, uint16_t value)
 	switch (portNumber)
 	{
 		case 1:
-			CTRL_ADDR = base_ptr_gcl + PORT_0_GCL_CTRL;
-			GCL_TIME_ADDR = port_0_gcl_time;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_gcl + PORT_0_GCL_CTRL);
+			GCL_TIME_ADDR = (int*)(port_0_gcl_time);
 			break;
 		case 2:
-			CTRL_ADDR = base_ptr_gcl + PORT_1_GCL_CTRL;
-			GCL_TIME_ADDR = port_1_gcl_time;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_gcl + PORT_1_GCL_CTRL);
+			GCL_TIME_ADDR = (int*)(port_1_gcl_time);
 			break;
 		case 3:
-			CTRL_ADDR = base_ptr_gcl + PORT_2_GCL_CTRL;
-			GCL_TIME_ADDR = port_2_gcl_time;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_gcl + PORT_2_GCL_CTRL);
+			GCL_TIME_ADDR = (int*)(port_2_gcl_time);
 			break;
 		case 4:
-			CTRL_ADDR = base_ptr_gcl + PORT_3_GCL_CTRL;
-			GCL_TIME_ADDR = port_3_gcl_time;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_gcl + PORT_3_GCL_CTRL);
+			GCL_TIME_ADDR = (int*)(port_3_gcl_time);
 			break;
 		default:
 			printf("set gcl time interval: Invalid portNumber.\r\n");

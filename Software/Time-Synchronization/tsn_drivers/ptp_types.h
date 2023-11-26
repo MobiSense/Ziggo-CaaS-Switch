@@ -44,6 +44,24 @@ typedef uint8_t UInteger4;
 typedef uint8_t bool;
 #endif
 
+/**
+ * @brief Macro to define maximum path trace.
+ * @note The maximum possible number is 179 based on specification we can set
+ * the maximum here and restrict the frame using MAX_PTP_PACKET instead
+ * @code{.c}
+ * #define MAX_PATH_TRACE_N 179
+ * @endcode
+ * @see 10.3.8.23 pathTrace
+ */
+#define MAX_PATH_TRACE_N 8 // at most 8 hops
+
+/**
+ * @brief Macro which defines Clock Identity Length.
+ */
+#define CLOCK_IDENTITY_LENGTH	  8
+
+typedef uint8_t ClockIdentity[CLOCK_IDENTITY_LENGTH];
+
 typedef enum {
     MASTER_PORT,
     SLAVE_PORT,
@@ -92,11 +110,33 @@ typedef struct GMPriority {
     PortIdentity sourcePortIdentity;
 } GMPriority;
 
+// 10.3.9.4 infoIs
+typedef enum {
+    INFOIS_RECEIVED,
+    INFOIS_MINE,
+    INFOIS_AGED,
+    INFOIS_DISABLED
+} BmcsInfoIs;
+
+// 10.3.11.2.1 rcvInfo
+typedef enum {
+    RCVDINFO_REPEATED_MASTER_INFO,
+    RCVDINFO_SUPERIOR_MASTER_INFO,
+    RCVDINFO_INFERIOR_MASTER_INFO,
+    RCVDINFO_OTHER_INFO
+} BmcsRcvdInfo;
+
+typedef enum {
+    SAME_PRIORITY,
+    SUPERIOR_PRIORITY,
+    INFERIOR_PRIORITY,
+} bmcs_priority_comparison_result;
+
 // Global variables
 // 10.2.5 & 10.3.10
 typedef struct PerPortGlobal {
     bool asCapable;
-    bool asymmetryMeasurementMode;
+    bool asymmetryMeasurementMode; // 10.2.5.2
     UScaledNs syncReceiptTimeoutTimeInterval;
     int8_t currentLogSyncInterval;
     UScaledNs syncInterval;
@@ -110,10 +150,36 @@ typedef struct PerPortGlobal {
     bool syncLocked;
     bool syncSlowDown;
     UScaledNs oldSyncInterval;
-    uint16_t syncReceiptTimeout;
+    uint16_t syncReceiptTimeout; // 10.7.3.1
+    uint16_t announceReceiptTimeout; // 10.7.3.2
 
-    UScaledNs announceInterval;
-    int8_t currentLogAnnounceInterval;  // 0 for 1 second.
+    UScaledNs announceReceiptTimeoutTimeInterval; // 10.3.10.1
+    Enumeration2 infoIs; // 10.3.10.4
+    PriorityVector masterPriority; // 10.3.10.5
+    int8_t currentLogAnnounceInterval;  // 0 for 1 second. 10.3.10.6
+    int8_t initialLogAnnounceInterval; // 0 for 1 second. 10.3.10.7
+    UScaledNs announceInterval; // 10.3.10.8
+    bool newInfo; // 10.3.10.10
+    PriorityVector portPriority; // 10.3.10.11
+    uint16_t portStepsRemoved; // 10.3.10.12 
+    bool rcvdMsg; // 10.3.10.14 
+    bool updtInfo; // 10.3.10.15    
+
+    bool annLeap61; // 10.3.10.16
+	bool annLeap59; // 10.3.10.17
+	bool annCurrentUtcOffsetValid; // 10.3.10.18
+	bool annPtpTimescale; // 10.3.10.19
+	bool annTimeTraceable; // 10.3.10.20
+	bool annFrequencyTraceable; // 10.3.10.21
+	int16_t annCurrentUtcOffset; // 10.3.10.22
+	Enumeration8 annTimeSource; // 10.3.10.23
+
+    // ??? global pathTrace is updated only when portState is known
+	// to be SlavePort, in the case when system is grandmaster (no SlavePort)
+	// and the Announce received may convey transition of portState to SlavePort
+	// a copy of the announce pathSequence should be used for global pathTrace
+	uint8_t annPathSequenceCount;
+	ClockIdentity annPathSequence[MAX_PATH_TRACE_N];
 } PerPortGlobal;
 
 typedef struct PerPTPInstanceGlobal {
@@ -137,26 +203,46 @@ typedef struct PerPTPInstanceGlobal {
     UScaledNs localTime;
     PortState selectedState[N_PORTS + 1];
     ExtendedTimestamp masterTime;
-    uint8_t thisClock[8];
+    uint8_t thisClock[8]; // 10.2.4.22
     int8_t parentLogSyncInterval;
-    GMPriority gmPriority;
+    // GMPriority gmPriority;
     UScaledNs syncReceiptTimeoutTime;
 
     // 10.3.9
-    bool leap61;
-    bool leap59;
+    bool reselect[N_PORTS + 1]; // 10.3.9.1
+    bool selected[N_PORTS + 1]; // 10.3.9.2
+    uint16_t masterStepsRemoved; // 10.3.9.3
+    bool leap61; // 10.3.9.4
+    bool leap59; // 10.3.9.5
     bool currentUtcOffsetValid;
     bool ptpTimescale;
     bool timeTraceable;
     bool frequencyTraceable;
     int16_t currentUtcOffset;
-    uint8_t timeSource;
-    PriorityVector gmPriorityVector;
+    Enumeration8 timeSource;
+
+    bool sysLeap61; // 10.3.9.12
+	bool sysLeap59; // 10.3.9.13
+	bool sysCurrentUTCOffsetValid; // 10.3.9.14
+	bool sysPtpTimescale; // 10.3.9.15
+	bool sysTimeTraceable; // 10.3.9.16
+	bool sysFrequencyTraceable; // 10.3.9.17
+	int16_t sysCurrentUtcOffset; // 10.3.9.18
+	Enumeration8 sysTimeSource; // 10.3.9.19
+    PriorityVector systemPriority; // 10.3.9.20
+    PriorityVector gmPriority;
+    PriorityVector lastGmPriority; // 10.3.9.22
     uint16_t gmStepsRemoved;
     uint16_t nPathTrace;
-    uint8_t pathTrace[8][8];  // at most 8 hops
+    ClockIdentity pathTrace[MAX_PATH_TRACE_N];  // at most 8 hops
 
     bool externalPortConfigurationEnabled;
+
+    
+
+    uint8_t domainNumber; // domainNumber is not defined in the standard, but we need here
+    ClockIdentity gmIdentity; // 9.6.2.2
+    
 
 } PerPTPInstanceGlobal;
 
@@ -250,9 +336,9 @@ typedef struct ClockQuality {
 } ClockQuality;
 
 typedef struct PTPMsgPathTraceTLV {
-    uint16_t tlvType;      // The value of the tlvType field is 0x8
+    Enumeration16 tlvType;      // The value of the tlvType field is 0x8
     uint16_t lengthField;  // in bytes, not including tlvType and LengthField
-    uint8_t pathSequence[8][8];  // consider at most 8 hops
+    ClockIdentity pathSequence[MAX_PATH_TRACE_N];  // consider at most 8 hops
 } PTPMsgPathTraceTLV;
 
 typedef struct PTPMsgAnnounce {
@@ -334,21 +420,22 @@ UScaledNs uscaledns_subtract(UScaledNs t1, UScaledNs t2);
 UScaledNs uscaledns_add(UScaledNs t1, UScaledNs t2);
 UScaledNs uscaledns_mul(UScaledNs t1, UScaledNs t2);
 UScaledNs uscaledns_mul_double(UScaledNs t1, double r);
-UScaledNs uscaledns_mul_double_mode(UScaledNs t1, double r, int mode);
 double uscaledns_div(UScaledNs t1, UScaledNs t2);
 void print_uscaledns(UScaledNs t);
 UScaledNs uscaledns_divide_by_2(UScaledNs t);
 int uscaledns_compare(UScaledNs t1, UScaledNs t2);
 uint64_t uint64_uscaledns(UScaledNs t);
 UScaledNs uscaledns_uint64(uint64_t t);
-UScaledNs uscaledns_double(double r, int mode);
+UScaledNs uscaledns_double(double r);
 int portIdentityEqual(PortIdentity pi1, PortIdentity pi2);
 UScaledNs uscaledns_ptpmsgtimestamp(PTPMsgTimestamp ptpmsgts);
 PTPMsgTimestamp ptpmsgtimestamp_uscaledns(UScaledNs usns);
 PTPMsgTimestamp ptpmsgtimestamp_extendedtimestamp(ExtendedTimestamp ts);
 void set_default_clock_identity(uint8_t *clock_identity);
 void print_path_trace(uint8_t *pathTrace);
-
+uint8_t compare_priority_vectors(PriorityVector *priorityA, PriorityVector *priorityB);
+char *lookup_port_state_name(PortState state);
+void print_priority_vector(const char *identifier, PriorityVector *priorityVector, const char *file, int line);
 #ifdef __cplusplus
 }
 #endif

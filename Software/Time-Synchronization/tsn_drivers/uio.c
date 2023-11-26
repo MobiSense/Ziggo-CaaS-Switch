@@ -20,7 +20,7 @@ void *uio_init(char *uiod) {
     fd = open(uiod, O_RDWR);
     if (fd < 1) {
     	printf("Invalid UIO device file:%s!\n", uiod);
-    	return -1;
+    	return (void *)-1;
     }
     printf("(fd:%d) UIO device file:%s is valid.\n", fd, uiod);
 
@@ -29,7 +29,7 @@ void *uio_init(char *uiod) {
 
     if(base_ptr == MAP_FAILED){
     	perror("mmap() failed\n");
-        return 1;
+        return (void *)1;
     }
     printf("mmap() success!\n");
     printf("uio base_ptr is: %p\n", base_ptr);
@@ -45,7 +45,7 @@ void *switch_rule_uio_init() {
     fd = open(uiod, O_RDWR);
     if (fd < 1) {
     	printf("Invalid UIO device file:%s!\n", uiod);
-    	return -1;
+    	return (void *)-1;
     }
     printf("(fd:%d) UIO device file:%s is valid.\n", fd, uiod);
 
@@ -54,7 +54,7 @@ void *switch_rule_uio_init() {
 
     if(base_ptr == MAP_FAILED){
     	perror("mmap() failed\n");
-        return 1;
+        return (void *)1;
     }
     printf("mmap() success!\n");
     printf("base_ptr: %p\n", base_ptr);

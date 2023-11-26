@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "../log/log.h"
 void ptp_msg_header_template(PTPMsgHeader *head, PTPMsgType msgtype,
                              uint16_t len, PortIdentity *portId, uint16_t seqid,
                              int8_t logMessageInterval, int64_t correction) {
@@ -178,11 +179,7 @@ UScaledNs uscaledns_mul(UScaledNs t1, UScaledNs t2) {
 }
 
 UScaledNs uscaledns_mul_double(UScaledNs t1, double r) {
-    return uscaledns_mul_double_mode(t1, r, 1);
-}
-
-UScaledNs uscaledns_mul_double_mode(UScaledNs t1, double r, int mode) {
-    return uscaledns_mul(t1, uscaledns_double(r, mode));
+    return uscaledns_mul(t1, uscaledns_double(r));
 }
 
 int compare_array(uint64_t a[], uint64_t b[], size_t size) {
@@ -270,7 +267,7 @@ UScaledNs uscaledns_divide_by_2(UScaledNs t) {
 
 void print_uscaledns(UScaledNs t) {
     uint32_t *ns_h, *ns_l;
-    ns_l = &t.nsec;
+    ns_l = (uint32_t *)&t.nsec;
     ns_h = ns_l + 1;
     printf("%04X ns_msb ", t.nsec_msb);
     printf("%08X %08X ns ", *ns_h, *ns_l);
@@ -337,7 +334,7 @@ void set_default_clock_identity(uint8_t *clock_identity) {
     uint32_t *clock_identity_l, *clock_identity_h;
     clock_identity_l = (uint32_t *)clock_identity;
     clock_identity_h = clock_identity_l + 1;
-    *clock_identity_l = DEFAULT_CLOCK_IDENTITY_L;
+    *clock_identity_l = DEFAULT_CLOCK_IDENTITY_L+1;
     *clock_identity_h = DEFAULT_CLOCK_IDENTITY_H;
 }
 
@@ -345,11 +342,7 @@ PTPMsgTimestamp ptpmsgtimestamp_extendedtimestamp(ExtendedTimestamp ts) {
     return ptpmsgtimestamp_uscaledns((UScaledNs)ts);
 }
 
-
-// mode = 0 round
-// mode = 1 ceil (default)
-// mode = 2 floor
-UScaledNs uscaledns_double(double r, int mode) {
+UScaledNs uscaledns_double(double r) {
     UScaledNs t;
 
     t.nsec = (uint64_t)(floor(r));
@@ -364,41 +357,19 @@ UScaledNs uscaledns_double(double r, int mode) {
         } else
             r = r * 2;
     }
-    if (mode == 0) {
-        // rounding
-        if (r * 2 > 1) {
-            if (t.subns == 0xffff) {
-                t.subns = 0;
-                if (t.nsec == 0xffffffffffffffff) {
-                    t.nsec = 0;
-                    t.nsec_msb++;
-                } else {
-                    t.nsec++;
-                }
+    // rounding
+    if (r * 2 > 1) {
+        if (t.subns == 0xffff) {
+            t.subns = 0;
+            if (t.nsec == 0xffffffffffffffff) {
+                t.nsec = 0;
+                t.nsec_msb++;
             } else {
-                t.subns++;
+                t.nsec++;
             }
+        } else {
+            t.subns++;
         }
-    } else
-    if (mode == 1) {
-        // ceiling
-        if (r > 1e-6) { // r > 0
-            if (t.subns == 0xffff) {
-                t.subns = 0;
-                if (t.nsec == 0xffffffffffffffff) {
-                    t.nsec = 0;
-                    t.nsec_msb++;
-                } else {
-                    t.nsec++;
-                }
-            } else {
-                t.subns++;
-            }
-        }
-    } else
-    {
-        // flooring
-        
     }
 
     return t;
@@ -407,4 +378,66 @@ void print_path_trace(uint8_t *pathTrace) {
     uint64_t toPrint;
     memcpy(&toPrint, pathTrace, 8);
     printf("%" PRIu64 "\r\n", toPrint);
+}
+
+uint8_t compare_priority_vectors(PriorityVector *priorityA, PriorityVector *priorityB)
+{
+        /* 10.3.5 priority vector comparison */
+        uint8_t result = SAME_PRIORITY;
+
+        /* 10.3.4 For all components, a lsser numerical value is better,
+           and earlier components in the list are more significant */
+        int compare = memcmp(priorityA, priorityB, sizeof(PriorityVector));
+        if (compare < 0){
+            result = SUPERIOR_PRIORITY;
+        }
+        else if (compare > 0){
+            result = INFERIOR_PRIORITY;
+        }
+        return result;
+}
+
+char *lookup_port_state_name(PortState state) 
+{
+    switch (state) {
+        case MASTER_PORT:
+            return "MASTER_PORT";
+        case SLAVE_PORT:
+            return "SLAVE_PORT";
+        case PASSIVE_PORT:
+            return "PASSIVE_PORT";
+        case DISABLED_PORT:
+            return "DISABLED_PORT";
+        default:
+            return "UNKNOWN";
+    }
+}
+
+void print_priority_vector(const char *identifier, PriorityVector *priorityVector, const char *file, int line)
+{
+	log_log(LOG_DEBUG, file, line, "%-10s: P1=%-6d CC=%-6d CA=%-6d LV=%-6d P2=%-6d CI=%02X%02X%02X%02X%02X%02X%02X%02X"
+	       " SR=%-6d SI=%02X%02X%02X%02X%02X%02X%02X%02X", identifier,
+               priorityVector->rootSystemIdentity.priority1,
+               priorityVector->rootSystemIdentity.clockClass,
+               priorityVector->rootSystemIdentity.clockAccuracy,
+               priorityVector->rootSystemIdentity.offsetScaledLogVariance,
+               priorityVector->rootSystemIdentity.priority2,
+               priorityVector->rootSystemIdentity.clockIdentity[0],
+               priorityVector->rootSystemIdentity.clockIdentity[1],
+               priorityVector->rootSystemIdentity.clockIdentity[2],
+               priorityVector->rootSystemIdentity.clockIdentity[3],
+               priorityVector->rootSystemIdentity.clockIdentity[4],
+               priorityVector->rootSystemIdentity.clockIdentity[5],
+               priorityVector->rootSystemIdentity.clockIdentity[6],
+               priorityVector->rootSystemIdentity.clockIdentity[7],
+               priorityVector->stepsRemoved,
+               priorityVector->sourcePortClockIdentity[0],
+               priorityVector->sourcePortClockIdentity[1],
+               priorityVector->sourcePortClockIdentity[2],
+               priorityVector->sourcePortClockIdentity[3],
+               priorityVector->sourcePortClockIdentity[4],
+               priorityVector->sourcePortClockIdentity[5],
+               priorityVector->sourcePortClockIdentity[6],
+               priorityVector->sourcePortClockIdentity[7]
+        );
 }

@@ -65,36 +65,36 @@ int tsu_tx_get_timestamp(uint16_t portNumber, TSUTimestamp *tsuTimestamp) {
 	switch (portNumber)
 	{
 	case 1:
-		QUE_STATUS_ADDR = base_ptr_tsu + PORT_0_TSU_TXQUE_STATUS;
-		CTRL_ADDR = base_ptr_tsu + PORT_0_TSU_TXCTRL;
-		TSU_DATA_HH_ADDR = base_ptr_tsu + PORT_0_TSU_TXQUE_DATA_HH;
-		TSU_DATA_HL_ADDR = base_ptr_tsu + PORT_0_TSU_TXQUE_DATA_HL;
-		TSU_DATA_LH_ADDR = base_ptr_tsu + PORT_0_TSU_TXQUE_DATA_LH;
-		TSU_DATA_LL_ADDR = base_ptr_tsu + PORT_0_TSU_TXQUE_DATA_LL;
+		QUE_STATUS_ADDR  = (UINTPTR)(base_ptr_tsu + PORT_0_TSU_TXQUE_STATUS);
+		CTRL_ADDR        = (UINTPTR)(base_ptr_tsu + PORT_0_TSU_TXCTRL);
+		TSU_DATA_HH_ADDR = (UINTPTR)(base_ptr_tsu + PORT_0_TSU_TXQUE_DATA_HH);
+		TSU_DATA_HL_ADDR = (UINTPTR)(base_ptr_tsu + PORT_0_TSU_TXQUE_DATA_HL);
+		TSU_DATA_LH_ADDR = (UINTPTR)(base_ptr_tsu + PORT_0_TSU_TXQUE_DATA_LH);
+		TSU_DATA_LL_ADDR = (UINTPTR)(base_ptr_tsu + PORT_0_TSU_TXQUE_DATA_LL);
 		break;
 	case 2:
-		QUE_STATUS_ADDR = base_ptr_tsu + PORT_1_TSU_TXQUE_STATUS;
-		CTRL_ADDR = base_ptr_tsu + PORT_1_TSU_TXCTRL;
-		TSU_DATA_HH_ADDR = base_ptr_tsu + PORT_1_TSU_TXQUE_DATA_HH;
-		TSU_DATA_HL_ADDR = base_ptr_tsu + PORT_1_TSU_TXQUE_DATA_HL;
-		TSU_DATA_LH_ADDR = base_ptr_tsu + PORT_1_TSU_TXQUE_DATA_LH;
-		TSU_DATA_LL_ADDR = base_ptr_tsu + PORT_1_TSU_TXQUE_DATA_LL;
+		QUE_STATUS_ADDR  = (UINTPTR)(base_ptr_tsu + PORT_1_TSU_TXQUE_STATUS);
+		CTRL_ADDR        = (UINTPTR)(base_ptr_tsu + PORT_1_TSU_TXCTRL);
+		TSU_DATA_HH_ADDR = (UINTPTR)(base_ptr_tsu + PORT_1_TSU_TXQUE_DATA_HH);
+		TSU_DATA_HL_ADDR = (UINTPTR)(base_ptr_tsu + PORT_1_TSU_TXQUE_DATA_HL);
+		TSU_DATA_LH_ADDR = (UINTPTR)(base_ptr_tsu + PORT_1_TSU_TXQUE_DATA_LH);
+		TSU_DATA_LL_ADDR = (UINTPTR)(base_ptr_tsu + PORT_1_TSU_TXQUE_DATA_LL);
 		break;
 	case 3:
-		QUE_STATUS_ADDR = base_ptr_tsu + PORT_2_TSU_TXQUE_STATUS;
-		CTRL_ADDR = base_ptr_tsu + PORT_2_TSU_TXCTRL;
-		TSU_DATA_HH_ADDR = base_ptr_tsu + PORT_2_TSU_TXQUE_DATA_HH;
-		TSU_DATA_HL_ADDR = base_ptr_tsu + PORT_2_TSU_TXQUE_DATA_HL;
-		TSU_DATA_LH_ADDR = base_ptr_tsu + PORT_2_TSU_TXQUE_DATA_LH;
-		TSU_DATA_LL_ADDR = base_ptr_tsu + PORT_2_TSU_TXQUE_DATA_LL;
+		QUE_STATUS_ADDR  = (UINTPTR)(base_ptr_tsu + PORT_2_TSU_TXQUE_STATUS);
+		CTRL_ADDR        = (UINTPTR)(base_ptr_tsu + PORT_2_TSU_TXCTRL);
+		TSU_DATA_HH_ADDR = (UINTPTR)(base_ptr_tsu + PORT_2_TSU_TXQUE_DATA_HH);
+		TSU_DATA_HL_ADDR = (UINTPTR)(base_ptr_tsu + PORT_2_TSU_TXQUE_DATA_HL);
+		TSU_DATA_LH_ADDR = (UINTPTR)(base_ptr_tsu + PORT_2_TSU_TXQUE_DATA_LH);
+		TSU_DATA_LL_ADDR = (UINTPTR)(base_ptr_tsu + PORT_2_TSU_TXQUE_DATA_LL);
 		break;
 	case 4:
-		QUE_STATUS_ADDR = base_ptr_tsu + PORT_3_TSU_TXQUE_STATUS;
-		CTRL_ADDR = base_ptr_tsu + PORT_3_TSU_TXCTRL;
-		TSU_DATA_HH_ADDR = base_ptr_tsu + PORT_3_TSU_TXQUE_DATA_HH;
-		TSU_DATA_HL_ADDR = base_ptr_tsu + PORT_3_TSU_TXQUE_DATA_HL;
-		TSU_DATA_LH_ADDR = base_ptr_tsu + PORT_3_TSU_TXQUE_DATA_LH;
-		TSU_DATA_LL_ADDR = base_ptr_tsu + PORT_3_TSU_TXQUE_DATA_LL;
+		QUE_STATUS_ADDR  = (UINTPTR)(base_ptr_tsu + PORT_3_TSU_TXQUE_STATUS);
+		CTRL_ADDR        = (UINTPTR)(base_ptr_tsu + PORT_3_TSU_TXCTRL);
+		TSU_DATA_HH_ADDR = (UINTPTR)(base_ptr_tsu + PORT_3_TSU_TXQUE_DATA_HH);
+		TSU_DATA_HL_ADDR = (UINTPTR)(base_ptr_tsu + PORT_3_TSU_TXQUE_DATA_HL);
+		TSU_DATA_LH_ADDR = (UINTPTR)(base_ptr_tsu + PORT_3_TSU_TXQUE_DATA_LH);
+		TSU_DATA_LL_ADDR = (UINTPTR)(base_ptr_tsu + PORT_3_TSU_TXQUE_DATA_LL);
 		break;
 	default:
 		printf("tsu tx get timestamp: Invalid portNumber.\r\n");
@@ -154,39 +154,39 @@ int tsu_rx_get_timestamp(uint16_t portNumber, TSUTimestamp *tsuTimestamp) {
 	switch (portNumber)
 	{
 	case 1:
-		QUE_STATUS_ADDR = base_ptr_tsu + PORT_0_TSU_RXQUE_STATUS;
-		CTRL_ADDR = base_ptr_tsu + PORT_0_TSU_RXCTRL;
-		TSU_DATA_HH_ADDR = base_ptr_tsu + PORT_0_TSU_RXQUE_DATA_HH;
-		TSU_DATA_HL_ADDR = base_ptr_tsu + PORT_0_TSU_RXQUE_DATA_HL;
-		TSU_DATA_LH_ADDR = base_ptr_tsu + PORT_0_TSU_RXQUE_DATA_LH;
-		TSU_DATA_LL_ADDR = base_ptr_tsu + PORT_0_TSU_RXQUE_DATA_LL;
+		QUE_STATUS_ADDR  = (UINTPTR)(base_ptr_tsu + PORT_0_TSU_RXQUE_STATUS);
+		CTRL_ADDR        = (UINTPTR)(base_ptr_tsu + PORT_0_TSU_RXCTRL);
+		TSU_DATA_HH_ADDR = (UINTPTR)(base_ptr_tsu + PORT_0_TSU_RXQUE_DATA_HH);
+		TSU_DATA_HL_ADDR = (UINTPTR)(base_ptr_tsu + PORT_0_TSU_RXQUE_DATA_HL);
+		TSU_DATA_LH_ADDR = (UINTPTR)(base_ptr_tsu + PORT_0_TSU_RXQUE_DATA_LH);
+		TSU_DATA_LL_ADDR = (UINTPTR)(base_ptr_tsu + PORT_0_TSU_RXQUE_DATA_LL);
 		// printf("    Received frame from port 0.\r\n");
 		break;
 	case 2:
-		QUE_STATUS_ADDR = base_ptr_tsu + PORT_1_TSU_RXQUE_STATUS;
-		CTRL_ADDR = base_ptr_tsu + PORT_1_TSU_RXCTRL;
-		TSU_DATA_HH_ADDR = base_ptr_tsu + PORT_1_TSU_RXQUE_DATA_HH;
-		TSU_DATA_HL_ADDR = base_ptr_tsu + PORT_1_TSU_RXQUE_DATA_HL;
-		TSU_DATA_LH_ADDR = base_ptr_tsu + PORT_1_TSU_RXQUE_DATA_LH;
-		TSU_DATA_LL_ADDR = base_ptr_tsu + PORT_1_TSU_RXQUE_DATA_LL;
+		QUE_STATUS_ADDR  = (UINTPTR)(base_ptr_tsu + PORT_1_TSU_RXQUE_STATUS);
+		CTRL_ADDR        = (UINTPTR)(base_ptr_tsu + PORT_1_TSU_RXCTRL);
+		TSU_DATA_HH_ADDR = (UINTPTR)(base_ptr_tsu + PORT_1_TSU_RXQUE_DATA_HH);
+		TSU_DATA_HL_ADDR = (UINTPTR)(base_ptr_tsu + PORT_1_TSU_RXQUE_DATA_HL);
+		TSU_DATA_LH_ADDR = (UINTPTR)(base_ptr_tsu + PORT_1_TSU_RXQUE_DATA_LH);
+		TSU_DATA_LL_ADDR = (UINTPTR)(base_ptr_tsu + PORT_1_TSU_RXQUE_DATA_LL);
 		// printf("    Received frame from port 1.\r\n");
 		break;
 	case 3:
-		QUE_STATUS_ADDR = base_ptr_tsu + PORT_2_TSU_RXQUE_STATUS;
-		CTRL_ADDR = base_ptr_tsu + PORT_2_TSU_RXCTRL;
-		TSU_DATA_HH_ADDR = base_ptr_tsu + PORT_2_TSU_RXQUE_DATA_HH;
-		TSU_DATA_HL_ADDR = base_ptr_tsu + PORT_2_TSU_RXQUE_DATA_HL;
-		TSU_DATA_LH_ADDR = base_ptr_tsu + PORT_2_TSU_RXQUE_DATA_LH;
-		TSU_DATA_LL_ADDR = base_ptr_tsu + PORT_2_TSU_RXQUE_DATA_LL;
+		QUE_STATUS_ADDR  = (UINTPTR)(base_ptr_tsu + PORT_2_TSU_RXQUE_STATUS);
+		CTRL_ADDR        = (UINTPTR)(base_ptr_tsu + PORT_2_TSU_RXCTRL);
+		TSU_DATA_HH_ADDR = (UINTPTR)(base_ptr_tsu + PORT_2_TSU_RXQUE_DATA_HH);
+		TSU_DATA_HL_ADDR = (UINTPTR)(base_ptr_tsu + PORT_2_TSU_RXQUE_DATA_HL);
+		TSU_DATA_LH_ADDR = (UINTPTR)(base_ptr_tsu + PORT_2_TSU_RXQUE_DATA_LH);
+		TSU_DATA_LL_ADDR = (UINTPTR)(base_ptr_tsu + PORT_2_TSU_RXQUE_DATA_LL);
 		// printf("    Received frame from port 2.\r\n");
 		break;
 	case 4:
-		QUE_STATUS_ADDR = base_ptr_tsu + PORT_3_TSU_RXQUE_STATUS;
-		CTRL_ADDR = base_ptr_tsu + PORT_3_TSU_RXCTRL;
-		TSU_DATA_HH_ADDR = base_ptr_tsu + PORT_3_TSU_RXQUE_DATA_HH;
-		TSU_DATA_HL_ADDR = base_ptr_tsu + PORT_3_TSU_RXQUE_DATA_HL;
-		TSU_DATA_LH_ADDR = base_ptr_tsu + PORT_3_TSU_RXQUE_DATA_LH;
-		TSU_DATA_LL_ADDR = base_ptr_tsu + PORT_3_TSU_RXQUE_DATA_LL;
+		QUE_STATUS_ADDR  = (UINTPTR)(base_ptr_tsu + PORT_3_TSU_RXQUE_STATUS);
+		CTRL_ADDR        = (UINTPTR)(base_ptr_tsu + PORT_3_TSU_RXCTRL);
+		TSU_DATA_HH_ADDR = (UINTPTR)(base_ptr_tsu + PORT_3_TSU_RXQUE_DATA_HH);
+		TSU_DATA_HL_ADDR = (UINTPTR)(base_ptr_tsu + PORT_3_TSU_RXQUE_DATA_HL);
+		TSU_DATA_LH_ADDR = (UINTPTR)(base_ptr_tsu + PORT_3_TSU_RXQUE_DATA_LH);
+		TSU_DATA_LL_ADDR = (UINTPTR)(base_ptr_tsu + PORT_3_TSU_RXQUE_DATA_LL);
 		// printf("    Received frame from port 3.\r\n");
 		break;
 	default:

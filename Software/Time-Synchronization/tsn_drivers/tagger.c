@@ -65,32 +65,32 @@ int tagger_init(void *ptr) {
  */
 int set_tagger(uint16_t portNumber, int value) {
     UINTPTR CTRL_ADDR;
-	int* TAGGER_ADDR, UNTAGGER_ADDR, PRIORITY_ADDR;
+	UINTPTR TAGGER_ADDR, UNTAGGER_ADDR, PRIORITY_ADDR;
 	switch (portNumber)
 	{
 		case 1:
-			CTRL_ADDR     = base_ptr_tagger + PORT_0_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_0_TAGGER;
-            UNTAGGER_ADDR = base_ptr_tagger + PORT_0_UNTAGGER;
-            PRIORITY_ADDR = base_ptr_tagger + PORT_0_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_0_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_0_TAGGER);
+            UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_0_UNTAGGER);
+            PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_0_PRIORITY);
 			break;
 		case 2:
-			CTRL_ADDR     = base_ptr_tagger + PORT_1_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_1_TAGGER;
-            UNTAGGER_ADDR = base_ptr_tagger + PORT_1_UNTAGGER;
-            PRIORITY_ADDR = base_ptr_tagger + PORT_1_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_1_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_1_TAGGER);
+            UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_1_UNTAGGER);
+            PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_1_PRIORITY);
 			break;
 		case 3:
-			CTRL_ADDR     = base_ptr_tagger + PORT_2_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_2_TAGGER;
-            UNTAGGER_ADDR = base_ptr_tagger + PORT_2_UNTAGGER;
-            PRIORITY_ADDR = base_ptr_tagger + PORT_2_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_2_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_2_TAGGER);
+            UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_2_UNTAGGER);
+            PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_2_PRIORITY);
 			break;
 		case 4:
-			CTRL_ADDR     = base_ptr_tagger + PORT_3_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_3_TAGGER;
-            UNTAGGER_ADDR = base_ptr_tagger + PORT_3_UNTAGGER;
-            PRIORITY_ADDR = base_ptr_tagger + PORT_3_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_3_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_3_TAGGER);
+            UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_3_UNTAGGER);
+            PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_3_PRIORITY);
 			break;
 		default:
 			printf("set tagger: Invalid portNumber.\r\n");
@@ -110,32 +110,32 @@ int set_tagger(uint16_t portNumber, int value) {
  */
 int set_untagger(uint16_t portNumber, int value) {
     UINTPTR CTRL_ADDR;
-	int* TAGGER_ADDR, UNTAGGER_ADDR, PRIORITY_ADDR;
+	UINTPTR TAGGER_ADDR, UNTAGGER_ADDR, PRIORITY_ADDR;
 	switch (portNumber)
 	{
 		case 1:
-			CTRL_ADDR     = base_ptr_tagger + PORT_0_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_0_TAGGER;
-            UNTAGGER_ADDR = base_ptr_tagger + PORT_0_UNTAGGER;
-            PRIORITY_ADDR = base_ptr_tagger + PORT_0_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_0_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_0_TAGGER);
+            UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_0_UNTAGGER);
+            PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_0_PRIORITY);
 			break;
 		case 2:
-			CTRL_ADDR     = base_ptr_tagger + PORT_1_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_1_TAGGER;
-            UNTAGGER_ADDR = base_ptr_tagger + PORT_1_UNTAGGER;
-            PRIORITY_ADDR = base_ptr_tagger + PORT_1_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_1_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_1_TAGGER);
+            UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_1_UNTAGGER);
+            PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_1_PRIORITY);
 			break;
 		case 3:
-			CTRL_ADDR     = base_ptr_tagger + PORT_2_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_2_TAGGER;
-            UNTAGGER_ADDR = base_ptr_tagger + PORT_2_UNTAGGER;
-            PRIORITY_ADDR = base_ptr_tagger + PORT_2_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_2_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_2_TAGGER);
+            UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_2_UNTAGGER);
+            PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_2_PRIORITY);
 			break;
 		case 4:
-			CTRL_ADDR     = base_ptr_tagger + PORT_3_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_3_TAGGER;
-            UNTAGGER_ADDR = base_ptr_tagger + PORT_3_UNTAGGER;
-            PRIORITY_ADDR = base_ptr_tagger + PORT_3_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_3_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_3_TAGGER);
+            UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_3_UNTAGGER);
+            PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_3_PRIORITY);
 			break;
 		default:
 			printf("set tagger: Invalid portNumber.\r\n");
@@ -194,32 +194,32 @@ int disable_untagger(uint16_t portNumber) {
  */
 int check_tagger_status(uint16_t portNumber) {
 	UINTPTR CTRL_ADDR;
-	int* TAGGER_ADDR, UNTAGGER_ADDR, PRIORITY_ADDR;
+	UINTPTR TAGGER_ADDR, UNTAGGER_ADDR, PRIORITY_ADDR;
 	switch (portNumber)
 	{
 		case 1:
-			CTRL_ADDR     = base_ptr_tagger + PORT_0_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_0_TAGGER;
-			UNTAGGER_ADDR = base_ptr_tagger + PORT_0_UNTAGGER;
-			PRIORITY_ADDR = base_ptr_tagger + PORT_0_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_0_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_0_TAGGER);
+			UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_0_UNTAGGER);
+			PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_0_PRIORITY);
 			break;
 		case 2:
-			CTRL_ADDR     = base_ptr_tagger + PORT_1_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_1_TAGGER;
-			UNTAGGER_ADDR = base_ptr_tagger + PORT_1_UNTAGGER;
-			PRIORITY_ADDR = base_ptr_tagger + PORT_1_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_1_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_1_TAGGER);
+			UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_1_UNTAGGER);
+			PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_1_PRIORITY);
 			break;
 		case 3:
-			CTRL_ADDR     = base_ptr_tagger + PORT_2_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_2_TAGGER;
-			UNTAGGER_ADDR = base_ptr_tagger + PORT_2_UNTAGGER;
-			PRIORITY_ADDR = base_ptr_tagger + PORT_2_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_2_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_2_TAGGER);
+			UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_2_UNTAGGER);
+			PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_2_PRIORITY);
 			break;
 		case 4:
-			CTRL_ADDR     = base_ptr_tagger + PORT_3_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_3_TAGGER;
-			UNTAGGER_ADDR = base_ptr_tagger + PORT_3_UNTAGGER;
-			PRIORITY_ADDR = base_ptr_tagger + PORT_3_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_3_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_3_TAGGER);
+			UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_3_UNTAGGER);
+			PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_3_PRIORITY);
 			break;
 		default:
 			printf("set tagger: Invalid portNumber.\r\n");
@@ -237,32 +237,32 @@ int check_tagger_status(uint16_t portNumber) {
  */
 int check_untagger_status(uint16_t portNumber) {
 	UINTPTR CTRL_ADDR;
-	int* TAGGER_ADDR, UNTAGGER_ADDR, PRIORITY_ADDR;
+	UINTPTR TAGGER_ADDR, UNTAGGER_ADDR, PRIORITY_ADDR;
 	switch (portNumber)
 	{
 		case 1:
-			CTRL_ADDR     = base_ptr_tagger + PORT_0_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_0_TAGGER;
-			UNTAGGER_ADDR = base_ptr_tagger + PORT_0_UNTAGGER;
-			PRIORITY_ADDR = base_ptr_tagger + PORT_0_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_0_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_0_TAGGER);
+			UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_0_UNTAGGER);
+			PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_0_PRIORITY);
 			break;
 		case 2:
-			CTRL_ADDR     = base_ptr_tagger + PORT_1_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_1_TAGGER;
-			UNTAGGER_ADDR = base_ptr_tagger + PORT_1_UNTAGGER;
-			PRIORITY_ADDR = base_ptr_tagger + PORT_1_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_1_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_1_TAGGER);
+			UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_1_UNTAGGER);
+			PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_1_PRIORITY);
 			break;
 		case 3:
-			CTRL_ADDR     = base_ptr_tagger + PORT_2_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_2_TAGGER;
-			UNTAGGER_ADDR = base_ptr_tagger + PORT_2_UNTAGGER;
-			PRIORITY_ADDR = base_ptr_tagger + PORT_2_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_2_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_2_TAGGER);
+			UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_2_UNTAGGER);
+			PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_2_PRIORITY);
 			break;
 		case 4:
-			CTRL_ADDR     = base_ptr_tagger + PORT_3_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_3_TAGGER;
-			UNTAGGER_ADDR = base_ptr_tagger + PORT_3_UNTAGGER;
-			PRIORITY_ADDR = base_ptr_tagger + PORT_3_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_3_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_3_TAGGER);
+			UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_3_UNTAGGER);
+			PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_3_PRIORITY);
 			break;
 		default:
 			printf("set tagger: Invalid portNumber.\r\n");
@@ -281,32 +281,32 @@ int check_untagger_status(uint16_t portNumber) {
  */
 int set_priority(uint16_t portNumber, uint16_t priority) {
     UINTPTR CTRL_ADDR;
-	int* TAGGER_ADDR, UNTAGGER_ADDR, PRIORITY_ADDR;
+	UINTPTR TAGGER_ADDR, UNTAGGER_ADDR, PRIORITY_ADDR;
 	switch (portNumber)
 	{
 		case 1:
-			CTRL_ADDR     = base_ptr_tagger + PORT_0_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_0_TAGGER;
-            UNTAGGER_ADDR = base_ptr_tagger + PORT_0_UNTAGGER;
-            PRIORITY_ADDR = base_ptr_tagger + PORT_0_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_0_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_0_TAGGER);
+            UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_0_UNTAGGER);
+            PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_0_PRIORITY);
 			break;
 		case 2:
-			CTRL_ADDR     = base_ptr_tagger + PORT_1_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_1_TAGGER;
-            UNTAGGER_ADDR = base_ptr_tagger + PORT_1_UNTAGGER;
-            PRIORITY_ADDR = base_ptr_tagger + PORT_1_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_1_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_1_TAGGER);
+            UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_1_UNTAGGER);
+            PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_1_PRIORITY);
 			break;
 		case 3:
-			CTRL_ADDR     = base_ptr_tagger + PORT_2_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_2_TAGGER;
-            UNTAGGER_ADDR = base_ptr_tagger + PORT_2_UNTAGGER;
-            PRIORITY_ADDR = base_ptr_tagger + PORT_2_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_2_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_2_TAGGER);
+            UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_2_UNTAGGER);
+            PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_2_PRIORITY);
 			break;
 		case 4:
-			CTRL_ADDR     = base_ptr_tagger + PORT_3_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_3_TAGGER;
-            UNTAGGER_ADDR = base_ptr_tagger + PORT_3_UNTAGGER;
-            PRIORITY_ADDR = base_ptr_tagger + PORT_3_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_3_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_3_TAGGER);
+            UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_3_UNTAGGER);
+            PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_3_PRIORITY);
 			break;
 		default:
 			printf("set tagger: Invalid portNumber.\r\n");
@@ -325,32 +325,32 @@ int set_priority(uint16_t portNumber, uint16_t priority) {
  */
 int get_priority(uint16_t portNumber) {
     UINTPTR CTRL_ADDR;
-	int* TAGGER_ADDR, UNTAGGER_ADDR, PRIORITY_ADDR;
+	UINTPTR TAGGER_ADDR, UNTAGGER_ADDR, PRIORITY_ADDR;
 	switch (portNumber)
 	{
 		case 1:
-			CTRL_ADDR     = base_ptr_tagger + PORT_0_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_0_TAGGER;
-            UNTAGGER_ADDR = base_ptr_tagger + PORT_0_UNTAGGER;
-            PRIORITY_ADDR = base_ptr_tagger + PORT_0_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_0_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_0_TAGGER);
+            UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_0_UNTAGGER);
+            PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_0_PRIORITY);
 			break;
 		case 2:
-			CTRL_ADDR     = base_ptr_tagger + PORT_1_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_1_TAGGER;
-            UNTAGGER_ADDR = base_ptr_tagger + PORT_1_UNTAGGER;
-            PRIORITY_ADDR = base_ptr_tagger + PORT_1_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_1_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_1_TAGGER);
+            UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_1_UNTAGGER);
+            PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_1_PRIORITY);
 			break;
 		case 3:
-			CTRL_ADDR     = base_ptr_tagger + PORT_2_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_2_TAGGER;
-            UNTAGGER_ADDR = base_ptr_tagger + PORT_2_UNTAGGER;
-            PRIORITY_ADDR = base_ptr_tagger + PORT_2_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_2_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_2_TAGGER);
+            UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_2_UNTAGGER);
+            PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_2_PRIORITY);
 			break;
 		case 4:
-			CTRL_ADDR     = base_ptr_tagger + PORT_3_TAGGER_CTRL;
-			TAGGER_ADDR   = base_ptr_tagger + PORT_3_TAGGER;
-            UNTAGGER_ADDR = base_ptr_tagger + PORT_3_UNTAGGER;
-            PRIORITY_ADDR = base_ptr_tagger + PORT_3_PRIORITY;
+			CTRL_ADDR     = (UINTPTR)(base_ptr_tagger + PORT_3_TAGGER_CTRL);
+			TAGGER_ADDR   = (UINTPTR)(base_ptr_tagger + PORT_3_TAGGER);
+            UNTAGGER_ADDR = (UINTPTR)(base_ptr_tagger + PORT_3_UNTAGGER);
+            PRIORITY_ADDR = (UINTPTR)(base_ptr_tagger + PORT_3_PRIORITY);
 			break;
 		default:
 			printf("set tagger: Invalid portNumber.\r\n");

@@ -61,7 +61,7 @@ int push_switch_rule(char *mac_addr, int output_port) {
     }
     unsigned int *reg_base_ptr = g_base_ptr;
     unsigned int *reg_ptr = reg_base_ptr + g_counter;
-    char *reg_byte_ptr = reg_ptr;
+    char *reg_byte_ptr = (char *)reg_ptr;
     *(reg_byte_ptr) = mac_addr[2];
     *(reg_byte_ptr + 1) = mac_addr[3];
     *(reg_byte_ptr + 2) = mac_addr[4];

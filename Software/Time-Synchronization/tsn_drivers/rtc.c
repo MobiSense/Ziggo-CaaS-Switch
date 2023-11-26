@@ -105,6 +105,7 @@ int set_rtc_sync_offset(RTC_OFFSET_SIGN sign, UScaledNs *offset) {
 
     *((unsigned *)(base_ptr + RTC_CTRL)) = RTC_SET_CTRL_0;
     *((unsigned *)(base_ptr + RTC_CTRL)) = RTC_SET_OFFSET;
+    return 0;
 }
 
 /**

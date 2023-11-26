@@ -48,8 +48,10 @@ typedef struct MDPdelayReqSM {
     size_t listHeadPropTime, listTailPropTime;
     bool isEmptyPropTime;
 
-    MDPdelayReqSMState state;
-    MDPdelayReqSMState last_state;
+    // Current state of this SM.
+	MDPdelayReqSMState state;
+	// Last state of this SM.
+	MDPdelayReqSMState last_state;
 
 } MDPdelayReqSM;
 

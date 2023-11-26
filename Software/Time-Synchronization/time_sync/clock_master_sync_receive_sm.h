@@ -25,5 +25,5 @@ typedef struct ClockMasterSyncReceiveSM {
 void init_clock_master_sync_receive_sm(ClockMasterSyncReceiveSM *sm, PerPTPInstanceGlobal *per_pip_instance_global);
 void clock_master_sync_receive_sm_run(ClockMasterSyncReceiveSM *sm, UScaledNs ts);
 void clock_master_sync_receive_sm_recv_source_time(ClockMasterSyncReceiveSM *sm, ClockSourceTimeInvoke *source_time_req, UScaledNs ts);
-
+void clock_master_sync_receive_sm_ClockSourceReq(ClockMasterSyncReceiveSM *sm, ClockSourceTimeInvoke *source_time_req, UScaledNs ts);
 #endif

@@ -11,5 +11,10 @@
 #include "port_sync_sync_send_sm.h"
 #include "md_sync_send_sm.h"
 #include "md_sync_receive_sm.h"
+// For Announce messages
+#include "port_announce_information_ext_sm.h"
+#include "port_announce_information_sm.h"
+#include "port_state_selection_sm.h"
+#include "port_announce_transmit_sm.h"
 
 #endif

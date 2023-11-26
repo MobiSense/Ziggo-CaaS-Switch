@@ -12,6 +12,7 @@
 #include "tsn_drivers/tsu.h"
 #include "tsn_drivers/uio.h"
 #include "tsn_drivers/gcl.h"
+#include "tsn_drivers/switch_rules.h"
 
 #include "config.h"
 
@@ -19,8 +20,14 @@
 extern void setup_topo();
 extern void setup_gcl();
 
-void set_gcl_ring3() {
+void set_gcl_with_init() {
 	int get_gcl_status;
+	// printf("get GCL list: \r\n");
+	// get_gcl_status = get_gcl(1);
+	// get_gcl_status = get_gcl(2);
+	// get_gcl_status = get_gcl(3);
+	// get_gcl_status = get_gcl(4);
+//	printf("set GCL[2] to %08x: \r\n", 9);
 
 	// init all output queues
 	for (int i = 0; i < 16; i++) {
@@ -32,9 +39,15 @@ void set_gcl_ring3() {
 	// WARNING: set gcl port number is 1,2,3,4, there's no port 0!
 
 	setup_gcl();
+
+	// printf("get GCL list: \r\n");
+	// get_gcl_status = get_gcl(1);
+	// get_gcl_status = get_gcl(2);
+	// get_gcl_status = get_gcl(3);
+	// get_gcl_status = get_gcl(4);
 }
 
-void set_switch_rule_ring3() {
+void set_switch_rule_with_init() {
 	// output_port: 0 -> to Port 0
     //                 1 -> to Port 1
     //                 2 -> to Port 2

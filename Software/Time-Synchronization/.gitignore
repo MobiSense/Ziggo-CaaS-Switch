@@ -24,7 +24,7 @@
 
 # Shared objects (inc. Windows DLLs)
 *.dll
-#*.so
+*.so
 *.so.*
 *.dylib
 
@@ -54,3 +54,6 @@ dkms.conf
 # build
 build/
 .vscode/
+
+# OS
+.DS_Store
