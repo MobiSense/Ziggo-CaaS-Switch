@@ -19,7 +19,7 @@ The "config" directory contains topology & TSN/CaaS schedule results.
 
 This document takes the following topology as an example to give example configurations:
 
-![topology](../../figs/example_topology.png)
+![topology](../figs/example_topology.png)
 
 * ***-config.json: Mainly describes the network's topology, including the type of each node (device or switch), MAC address, PTP port status, and other node information, topology information, and MAC forwarding table. Example and explanation are as follows (note that the comments in the file are just for explanation, do not have such comments in actual use):
   
