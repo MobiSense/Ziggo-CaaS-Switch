@@ -87,7 +87,7 @@ We also provide more in-depth [documentation](docs/system-design.md) explaining 
 
 ## Demo APP Tutorial
 
-We also provide a [testbed build document](https://github.com/Horacehxw/Ziggo-Evaluation-Toolkitblob/main/docs/testbed.md)(in ZIGGO TSNPerf) that allows you to build a real-time Ethernet system using the ZIGGO swtich and ZIGGO TSNPerf.
+We also provide a [testbed build document](https://github.com/Horacehxw/Ziggo-TSNPerf/blob/main/docs/testbed.md)(in ZIGGO TSNPerf) that allows you to build a real-time Ethernet system using the ZIGGO swtich and ZIGGO TSNPerf.
 
 Through this platform, we can measure the `delay` and `jitter` of TSN time-critcial traffic, the switch's `gating capability`, `bandwidth guarantee` and `gating accuracy`.
 
