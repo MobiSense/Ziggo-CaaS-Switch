@@ -25,17 +25,19 @@
 
 4. [Features](#features)
 
-5. [Getting Started](#getting-started)
+5. [Read before start](#read-before-start)
 
-6. [System Design](#system-design)
+6. [Getting Started](#getting-started)
 
-7. [Demo App Tutorial](#demo-app-tutorial)
+7. [System Design](#system-design)
 
-8. [License and Citation](#license-and-citation)
+8. [Demo App Tutorial](#demo-app-tutorial)
 
-9. [TODO List](#todo-list)
+9. [License and Citation](#license-and-citation)
 
-10. [Contaction](#contaction)
+10. [TODO List](#todo-list)
+
+11. [Contributing](#Contributing)
 
 ## Introduction
 
@@ -73,7 +75,15 @@ The left side of the picture is the ZYNQ development board we use, and the right
   
   * ZIGGO provide gate accuracy applicable to **All Ethernet Frame Sizes**.
 
+## Read before start
+
+Getting started with ZIGGO-CaaS-Switch/ZIGGO-TSNPerf is a ==pretty hard== task. Users/developers need to have sufficient basic knowledge and be prepare to for a long periond of learning and debugging.
+
+Please refer to [basic_knowledge.md](docs/basic_knowledge.md) to check if you have ability to use ZIGGO competently. 
+
 ## Getting Started
+
+Please refer to [required.md](docs/required.md)  to  get prepared.
 
 Please refer to [hardware-build.md](docs/hardware-build.md) for the build hardware for ZIGGO Evaluation Toolkit and [software-build.md](docs/software-build.md) to run time synchronization logic and set up TSN GCL .
 
@@ -140,6 +150,8 @@ Please consider citing our papers if the project helps your research with the fo
 
 > At present, we have only tested our own Ziggo switches and are testing other commercial switches (such as Huawei ,H3C and NXP). We expect to maintain a list of test results in the future.
 
-## Contaction
+## Contributing
 
-If any questions and suggenstations, please email to admin@sense-lab.org. Or you can also consider raising an issue on github
+Please see the [guide](docs/contributing.md) for information on how to ask for help or contribute to the development of ZIGGO!
+
+> The development team will only answer questions on github issues and reject other forms of questions.
