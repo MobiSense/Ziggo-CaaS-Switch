@@ -4,7 +4,7 @@ This repo contains pre-build hardware & system rootfs to boot the **Zynq AX7021*
 
 ## File downloading
 
-Download the following file from [this](https://cloud.tsinghua.edu.cn/d/8277c491a8bd4e6a8997/) public link:
+Download the following file from [this](https://cloud.tsinghua.edu.cn/d/61ad5a800206451c856d/) public link:
 
 * BOOT.BIN
 * boot.scr
